@@ -99,13 +99,19 @@ function getDayData(obj, index){
 }
 
 function getByWeek(obj, index, weather_data){
-    const group_by_days = Object.groupBy(weather_data, ({dt_txt}) => dt_txt.slice(0, 10))
+    // const group_by_days = Object.groupBy(weather_data, ({dt_txt}) => dt_txt.slice(0, 10))    * not supported by Safari :(*
+    const weather_days_arr = [...new Set(weather_data.map(item => item.dt_txt.slice(0, 10)))]
+    const weather_days_obj = {}
+    weather_days_arr.forEach(item => weather_days_obj[item] = [])
+    weather_data.forEach(item => {
+        weather_days_obj[item.dt_txt.slice(0, 10)].push(item)
+    })
     obj.display_data.week = []
-    Object.values(group_by_days).forEach((day, index) => {
+    Object.values(weather_days_obj).forEach((day, index) => {
         const avg_temp = (day.reduce((total, cur) => total + cur.main.temp, 0) / day.length).toFixed(2)
         const obj_data = {
             avg_temp: avg_temp,
-            date: Object.keys(group_by_days)[index],
+            date: Object.keys(weather_days_obj)[index],
             img_url: `https://openweathermap.org/img/wn/${day[Math.floor(day.length / 2)].weather[0].icon}@2x.png`
         }
         obj.display_data.week.push(obj_data)
