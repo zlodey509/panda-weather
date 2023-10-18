@@ -34,25 +34,25 @@
             <div class="card__current_data" v-if="card.city_id">
                 <div class="card__current_data-head">
                     <div class="card__current_data-head__time">
-                        {{ card.display_data.current_data.time }}
+                        {{ card.display_data.current_data?.time }}
                     </div>
                     <div class="card__current_data-head__img">
-                        <img :src="card.display_data.current_data.img_url" alt="">
+                        <img :src="card.display_data.current_data?.img_url" alt="">
                     </div>
                     <div class="card__current_data-head__description">
-                        {{ card.display_data.current_data.description }}
+                        {{ card.display_data.current_data?.description }}
                     </div>
                 </div>
                 <div class="card__current_data-main">
                     <div class="card__current_data-main__row">
-                        {{ t('Current temperature') }}: <strong>{{ card.display_data.current_data.current_temp }}{{ card.display_data.selected_measure.desc }}</strong>
+                        {{ t('Current temperature') }}: <strong>{{ card.display_data.current_data?.current_temp }}{{ card.display_data.selected_measure.desc }}</strong>
                     </div>
                     <div class="card__current_data-main__row">
-                        {{ t('Feels like') }}: <strong>{{ card.display_data.current_data.feels_like }}{{ card.display_data.selected_measure.desc }}</strong>
+                        {{ t('Feels like') }}: <strong>{{ card.display_data.current_data?.feels_like }}{{ card.display_data.selected_measure.desc }}</strong>
                     </div>
                     <div class="card__current_data-main__row">
-                        <span>{{ t('Max') }}: <strong>{{ card.display_data.current_data.max_temp }}{{ card.display_data.selected_measure.desc }}</strong>, </span>
-                        <span>{{ t('Min') }}: <strong>{{ card.display_data.current_data.min_temp }}{{ card.display_data.selected_measure.desc }}</strong></span>
+                        <span>{{ t('Max') }}: <strong>{{ card.display_data.current_data?.max_temp }}{{ card.display_data.selected_measure.desc }}</strong>, </span>
+                        <span>{{ t('Min') }}: <strong>{{ card.display_data.current_data?.min_temp }}{{ card.display_data.selected_measure.desc }}</strong></span>
                     </div>
                 </div>
             </div>
