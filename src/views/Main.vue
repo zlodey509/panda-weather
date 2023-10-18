@@ -146,6 +146,7 @@ function getWeather(obj, index){
         getByWeek(obj, index, obj.weather_data.list)
     })
     .catch(error => {
+        console.log(error);
         obj.display_data = {
             selected_widget: 'day',
             selected_measure: {
@@ -164,7 +165,7 @@ function getWeather(obj, index){
         isCardLoading.value = false
     }).finally(() => {
         isCardLoading.value = false
-        console.log(obj.display_data.current_data);
+        // console.log(obj.display_data.current_data);
     })
 }
 
