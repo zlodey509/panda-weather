@@ -17,11 +17,11 @@
                     </svg>
                 </div>
                 <div class="card__actions">
-                    <svg v-if="card.display_data?.current_data" class="card__actions-heart" v-bind:class="{'active': card.isFavorite}" @click="AddOrRemoveFromFavorite(card)" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M12 4.419c-2.826-5.695-11.999-4.064-11.999 3.27 0 7.27 9.903 10.938 11.999 15.311 2.096-4.373 12-8.041 12-15.311 0-7.327-9.17-8.972-12-3.27z"/></svg>
+                    <svg v-if="card.city_id" class="card__actions-heart" v-bind:class="{'active': card.isFavorite}" @click="AddOrRemoveFromFavorite(card)" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M12 4.419c-2.826-5.695-11.999-4.064-11.999 3.27 0 7.27 9.903 10.938 11.999 15.311 2.096-4.373 12-8.041 12-15.311 0-7.327-9.17-8.972-12-3.27z"/></svg>
                     <span v-if="isAllowToRemoveCard" class="card__actions-close closemark" @click="$emit('onOpenRemoveCardModal', card)">&times;</span>
                 </div>
             </div>
-            <div class="row" v-if="card.display_data?.current_data">
+            <div class="row" v-if="card.city_id">
                 <div>
                     <input type="radio" :name="`measure_${index}`" :value="'metric'" @change="$emit('onMeasureChange', card, 'metric', index)" :id="`first_measure_${index}`" v-model="card.display_data.selected_measure.name">
                     <label :for="`first_measure_${index}`">{{t('Celcius')}}</label>
@@ -31,7 +31,7 @@
                     <label :for="`second_measure_${index}`">{{t('Fahrenheit')}}</label>
                 </div>
             </div>
-            <div class="card__current_data" v-if="card.display_data?.current_data">
+            <div class="card__current_data" v-if="card.city_id">
                 <div class="card__current_data-head">
                     <div class="card__current_data-head__time">
                         {{ card.display_data.current_data.time }}
@@ -56,7 +56,7 @@
                     </div>
                 </div>
             </div>
-            <div class="card__data_by_period" v-if="card.display_data?.current_data">
+            <div class="card__data_by_period" v-if="card.city_id">
                 <div class="row card__data_by_period-row">
                     <div class="card__data_by_period-choose_buttons">
                         <div class="card__data_by_period-choose_buttons__item" 

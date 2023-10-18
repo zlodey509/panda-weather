@@ -168,6 +168,7 @@ function addNewCard(city=''){
         cards.value.push({
             id: Date.now(),
             city: city ?? '',
+            city_id: '',
             isFavorite: false,
             display_data:{
                 selected_widget: 'day',
