@@ -114,7 +114,6 @@ axios.get(`https://api.ipdata.co?api-key=${ip_api_key}`).then(res => {
 })
 
 function getWeather(obj, index){
-    obj = cards.value.find(item => item.id == obj.id)
     isCardLoading.value = true
     axios.get(`https://api.openweathermap.org/data/2.5/forecast?q=${obj.city}&appid=${weather_api_key}&lang=${locale.value}&units=${obj.display_data.selected_measure.name}`).then(res => {
         obj.weather_data = res.data
@@ -137,9 +136,11 @@ function getWeather(obj, index){
 
         obj.display_data.week_time_range = ['d', 'n']
 
+        obj.city_id = obj.weather_data.city.id
+
         obj.isFavorite = checkOnFavorite(obj.city_id)
 
-        obj.city_id = obj.weather_data.city.id
+        
     }).then(r => {
         getDayData(obj, index)
         getByWeek(obj, index, obj.weather_data.list)
