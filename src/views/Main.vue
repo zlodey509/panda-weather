@@ -129,10 +129,12 @@ function getWeather(obj, index){
             max_temp: obj.weather_data.list[0].main.temp_max,
             min_temp: obj.weather_data.list[0].main.temp_min,
             description: obj.weather_data.list[0].weather[0].description,
-            time: new Date().toLocaleTimeString().slice(0, 5)
+            // time: new Date().toLocaleTimeString().slice(0, 5)
         }
 
         Object.assign(obj.display_data.current_data, current_data)
+
+        console.log(obj.display_data.current_data);
 
         obj.display_data.week_time_range = ['d', 'n']
 
@@ -191,6 +193,7 @@ function addNewCard(city=''){
                 },
                 day:[],
                 week: [],
+                week_time_range: ['d', 'n']
             }
         })
     }
