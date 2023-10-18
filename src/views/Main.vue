@@ -175,6 +175,7 @@ function addNewCard(city=''){
                     name: 'metric',
                     desc: '°C'
                 },
+                current_data: {},
                 day:[],
                 week: [],
             }
