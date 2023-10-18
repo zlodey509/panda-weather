@@ -134,7 +134,7 @@
 const {t, locale} = useI18n()
 import {defineEmits} from 'vue'
 
-const emit = defineEmits(['limitFavoriteCards'])
+const emit = defineEmits(['limitFavoriteCards', 'onSearch', 'onToggleTimeRange', 'onOpenRemoveModal', 'onMeasureChange'])
 
 const props = defineProps(['cards', 'isCardLoading', 'isAllowToRemoveCard', 'isAllowToSearch'])
 

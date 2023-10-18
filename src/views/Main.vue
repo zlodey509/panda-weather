@@ -246,43 +246,37 @@ function getByWeek(obj, index, weather_data){
 }
 
 function drawChart(chart_id, labels, data){
-    if(!charts[chart_id]){
-        charts[chart_id] = new Chart(
-            document.getElementById(chart_id).getContext('2d'),
-            {
-                type: 'line',
-                data: {
-                    labels: labels,
-                    datasets: [
-                    {
-                        data: data
-                    }
-                    ]
-                },
-                options: {
-                    plugins: {
-                        legend: {
-                            display: false
-                        },
+    charts[chart_id] ? charts[chart_id].destroy() : null
+    charts[chart_id] = new Chart(
+        document.getElementById(chart_id).getContext('2d'),
+        {
+            type: 'line',
+            data: {
+                labels: labels,
+                datasets: [
+                {
+                    data: data
+                }
+                ]
+            },
+            options: {
+                plugins: {
+                    legend: {
+                        display: false
                     },
-                    scales: {
-                        x: {
-                            ticks: {
-                                callback: function(value, index, ticks) {
-                                    return ''
-                                }
+                },
+                scales: {
+                    x: {
+                        ticks: {
+                            callback: function(value, index, ticks) {
+                                return ''
                             }
                         }
                     }
                 }
             }
-        );
-    }
-    else{
-        charts[chart_id].data.labels = labels
-        charts[chart_id].data.datasets[0].data = data
-        charts[chart_id].update()
-    }
+        }
+    );
 }
 
 function openRemoveCardModal(card){
