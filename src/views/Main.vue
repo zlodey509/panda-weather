@@ -119,8 +119,6 @@ function getWeather(obj, index){
     axios.get(`https://api.openweathermap.org/data/2.5/forecast?q=${obj.city}&appid=${weather_api_key}&lang=${locale.value}&units=${obj.display_data.selected_measure.name}`).then(res => {
         obj.weather_data = res.data
 
-        obj.city_id = obj.weather_data.city.id
-
         obj.weather_data.list.forEach(item => {
             item.weather[0].img_url = `https://openweathermap.org/img/wn/${item.weather[0].icon}@2x.png`
         });
@@ -138,6 +136,8 @@ function getWeather(obj, index){
         obj.display_data.week_time_range = ['d', 'n']
 
         obj.isFavorite = checkOnFavorite(obj.city_id)
+
+        obj.city_id = obj.weather_data.city.id
     }).then(r => {
         getDayData(obj, index)
         getByWeek(obj, index, obj.weather_data.list)
@@ -156,6 +156,7 @@ function getWeather(obj, index){
 
         if(error.response?.status == 404){
             isCityNotFoundModalOpen.value = true
+            obj.city_id = ''
         }
         isCardLoading.value = false
     }).finally(() => {
