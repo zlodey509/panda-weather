@@ -123,7 +123,7 @@ function getWeather(obj, index){
             item.weather[0].img_url = `https://openweathermap.org/img/wn/${item.weather[0].icon}@2x.png`
         });
 
-        obj.display_data.current_data = {
+        const current_data = {
             img_url: obj.weather_data.list[0].weather[0].img_url,
             current_temp: obj.weather_data.list[0].main.temp,
             feels_like: obj.weather_data.list[0].main.feels_like,
@@ -132,6 +132,8 @@ function getWeather(obj, index){
             description: obj.weather_data.list[0].weather[0].description,
             time: new Date().toLocaleTimeString().slice(0, 5)
         }
+
+        Object.assign(obj.display_data.current_data, current_data)
 
         obj.display_data.week_time_range = ['d', 'n']
 
@@ -177,7 +179,15 @@ function addNewCard(city=''){
                     name: 'metric',
                     desc: '°C'
                 },
-                current_data: {},
+                current_data: {
+                    img_url: '',
+                    current_temp: '',
+                    feels_like: '',
+                    max_temp: '',
+                    min_temp: '',
+                    description: '',
+                    time: ''
+                },
                 day:[],
                 week: [],
             }
