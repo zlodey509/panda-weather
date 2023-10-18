@@ -5,8 +5,8 @@
                 <div class="overlay__content"><span class="spinner"></span></div>
             </div>
         </div>
-        <div class="card" v-for="(card, index) in cards">
-            {{ card.display_data }}
+        <div class="card" v-for="(card, index) in cards" :key="card.city_id">
+            <!-- {{ card.display_data }} -->
             <div class="row card__top_row">
                 <div class="card__input">
                     <input type="text" :list="`cities_input_${index}`" :disabled="!isAllowToSearch" v-model="card.city" :placeholder="t('Enter the city')">
