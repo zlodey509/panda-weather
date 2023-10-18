@@ -15,8 +15,9 @@ https://api.ipdata.co?api-key=${ip_api_key}    // get user's current location by
 ```
 
 ```
-https://api.openweathermap.org/data/2.5/forecast?q=${obj.city}                                    // get weather forecast by city
-                                                &appid=${weather_api_key}
-                                                &lang=${locale.value}                             // with specific lang response
-                                                &units=${obj.display_data.selected_measure.name}  // and with selected unit of measurment  
+https://api.openweathermap.org/data/2.5/forecast?
+q=${obj.city}                                     // get weather forecast by city
+&appid=${weather_api_key}
+&lang=${locale.value}                             // with specific lang response
+&units=${obj.display_data.selected_measure.name}  // and with selected unit of measurment  
 ```
