@@ -101,8 +101,8 @@ const data_by_ip = ref(null)
 
 const charts = {}
 
+isCardLoading.value = true
 axios.get(`https://api.ipdata.co?api-key=${ip_api_key}`).then(res => {
-    isCardLoading.value = true
     data_by_ip.value = res.data
 
     addNewCard(data_by_ip.value.city)
